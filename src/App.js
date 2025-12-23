@@ -48,7 +48,7 @@ const ShirniyyatMagazasi = () => {
           id: product._id,
           name: product.ad,
           price: `${product.qiymet} AZN`,
-          image: product.sekil ? `http://localhost:8888${product.sekil}` : '',
+          image: product.sekil ? `https://sirniyyat-back-1.onrender.com${product.sekil}` : '',
           description: product.tesvir || '',
           weight: product.ceki ? `${product.ceki} qram` : ''
         }));

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// API base URL
-const API_BASE_URL = 'http://localhost:8888/api';
+// API base URL - Production Render backend
+const API_BASE_URL = 'https://sirniyyat-back-1.onrender.com/api';
 
 // Axios instance yaradırıq
 const api = axios.create({
@@ -48,19 +48,19 @@ export const getSingleProduct = async (id) => {
 export const createProduct = async (productData) => {
   try {
     const formData = new FormData();
-    
+
     // Məhsul məlumatlarını əlavə et
     formData.append('ad', productData.name);
     formData.append('qiymet', productData.price);
-    
+
     if (productData.description) {
       formData.append('tesvir', productData.description);
     }
-    
+
     if (productData.weight) {
       formData.append('ceki', productData.weight);
     }
-    
+
     // Şəkil faylını əlavə et (əgər varsa)
     if (productData.imageFile) {
       formData.append('sekil', productData.imageFile);
@@ -71,7 +71,7 @@ export const createProduct = async (productData) => {
         'Content-Type': 'multipart/form-data',
       },
     });
-    
+
     return response.data;
   } catch (error) {
     console.error('Məhsul yaratma xətası:', error);
@@ -85,24 +85,24 @@ export const createProduct = async (productData) => {
 export const updateProduct = async (id, productData) => {
   try {
     const formData = new FormData();
-    
+
     // Məhsul məlumatlarını əlavə et
     if (productData.name) {
       formData.append('ad', productData.name);
     }
-    
+
     if (productData.price) {
       formData.append('qiymet', productData.price);
     }
-    
+
     if (productData.description) {
       formData.append('tesvir', productData.description);
     }
-    
+
     if (productData.weight) {
       formData.append('ceki', productData.weight);
     }
-    
+
     // Şəkil faylını əlavə et (əgər yeni şəkil varsa)
     if (productData.imageFile) {
       formData.append('sekil', productData.imageFile);
@@ -113,7 +113,7 @@ export const updateProduct = async (id, productData) => {
         'Content-Type': 'multipart/form-data',
       },
     });
-    
+
     return response.data;
   } catch (error) {
     console.error('Məhsul yeniləmə xətası:', error);
